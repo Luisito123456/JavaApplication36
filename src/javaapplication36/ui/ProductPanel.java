@@ -55,7 +55,7 @@ public class ProductPanel extends JPanel {
 
     private void loadProducts() {
         try {
-            // QUERY COMPLETAMENTE CORREGIDO
+            
             String sql = "SELECT p.ProductId, p.SKU, p.Name, " +
                         "COALESCE(c.Name, 'Sin Categoría') as Categoria, " +
                         "COALESCE(s.Name, 'Sin Proveedor') as Proveedor, " +
@@ -101,20 +101,20 @@ public class ProductPanel extends JPanel {
 
     private void updateStatistics() {
         try {
-            // Total productos - QUERY CORREGIDO
+            // Total productos
             String sqlTotal = "SELECT COUNT(*) as total FROM Products WHERE IsActive = 1";
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery(sqlTotal);
             rs.next();
             int totalProducts = rs.getInt("total");
             
-            // Productos con stock bajo - QUERY CORREGIDO
+            // Productos con stock bajo 
             String sqlLowStock = "SELECT COUNT(*) as lowStock FROM Products WHERE Stock <= ReorderLevel AND IsActive = 1";
             rs = stmt.executeQuery(sqlLowStock);
             rs.next();
             int lowStock = rs.getInt("lowStock");
             
-            // Valor total del inventario - QUERY CORREGIDO
+            // Valor total del inventario 
             String sqlTotalValue = "SELECT SUM(SalePrice * Stock) as totalValue FROM Products WHERE IsActive = 1";
             rs = stmt.executeQuery(sqlTotalValue);
             rs.next();

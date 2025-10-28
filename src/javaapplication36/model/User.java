@@ -10,7 +10,7 @@ public class User {
     private String passwordHash;
     private String role;
     private boolean isActive;
-    private int employeeId; // <-- Agregar este campo
+    private int employeeId;
 
     public User() {
     }

@@ -26,7 +26,7 @@ public class UsersDAO {
                 User u = new User();
                 u.setId(rs.getInt("UserID"));
                 u.setUsername(rs.getString("Username"));
-                u.setPasswordHash(rs.getString("PasswordHash")); // si lo tienes como NVARCHAR
+                u.setPasswordHash(rs.getString("PasswordHash")); 
                 u.setRole(rs.getString("Role"));
                 u.setEmployeeId(rs.getInt("EmployeeID"));
                 users.add(u);
@@ -46,7 +46,7 @@ public class UsersDAO {
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
             ps.setString(1, u.getUsername());
-            ps.setString(2, u.getPasswordHash()); // Hashear antes de guardar
+            ps.setString(2, u.getPasswordHash()); // HASH SEGURIDAD CONTRASEÑA
             ps.setString(3, u.getRole());
             ps.setInt(4, u.getEmployeeId());
             ps.executeUpdate();

@@ -18,7 +18,7 @@ import javaapplication36.util.DBConnectionManager;
 
 public class ProductDAO {
 
-    // Traer todos los productos con categoría y proveedor
+    // Trae todos los productos con categoría y proveedor
     public List<Product> findAll() {
         List<Product> products = new ArrayList<>();
         String sql = "SELECT p.ProductId, p.SKU, p.Name, c.Name AS Category, s.Name AS Supplier, " +
@@ -96,7 +96,7 @@ public class ProductDAO {
             ps.setString(2, p.getSku());
             ps.setBigDecimal(3, p.getSalePrice());
             ps.setInt(4, p.getStock());
-            // Si no quieres categoría/proveedor, puedes poner NULL
+            // Opcion busqueda NULL
             ps.setObject(5, null); // CategoryId
             ps.setObject(6, null); // SupplierId
 

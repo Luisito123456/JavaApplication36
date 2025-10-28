@@ -24,7 +24,7 @@ public class CustomersPanel extends JPanel {
         setLayout(new BorderLayout());
         setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        // Modelo de la tabla - AJUSTADO para proveedores
+        // Proveedores
         customersModel = new DefaultTableModel(new Object[]{
             "ID", "Empresa", "Contacto", "Teléfono", "Email", "Compras", "Fecha Registro"
         }, 0) {
@@ -39,7 +39,7 @@ public class CustomersPanel extends JPanel {
         searchPanel.setBorder(BorderFactory.createTitledBorder("🔍 Búsqueda de Proveedores"));
         
         txtSearch = new JTextField(20);
-        btnSearch = new JButton("Buscar"); // DECLARADO CORRECTAMENTE
+        btnSearch = new JButton("Buscar"); 
         btnRefresh = new JButton("🔄 Actualizar");
         
         // LISTENERS EN ORDEN CORRECTO
@@ -102,7 +102,7 @@ public class CustomersPanel extends JPanel {
                 "N/A",
                 rs.getString("Phone"),
                 rs.getString("Email"),
-                rs.getInt("TotalCompras"), // Compras REALES del proveedor
+                rs.getInt("TotalCompras"), 
                 dateFormat.format(rs.getDate("CreatedAt"))
             });
         }
@@ -128,7 +128,7 @@ public class CustomersPanel extends JPanel {
         String sql = "SELECT c.CustomerId, c.Name, c.Phone, c.Email, c.CreatedAt, " +
                     "(SELECT COUNT(*) FROM InventoryMovements im " +
                     " WHERE im.MovementType = 'IN' " +
-                    " AND im.Reference LIKE '%' + c.Name + '%') as TotalCompras " +  // ← CORREGIDO
+                    " AND im.Reference LIKE '%' + c.Name + '%') as TotalCompras " +  
                     "FROM Customers c " +
                     "WHERE c.Name LIKE ? OR c.Email LIKE ? OR c.Phone LIKE ? " +
                     "ORDER BY c.Name";  // ← Quitado el GROUP BY ya que no hay JOIN
@@ -488,7 +488,7 @@ String sql = "SELECT ProductId, Name, CostPrice, Stock FROM Products WHERE IsAct
             int productId = getProductIdByName(productName);
             
             if (productId > 0) {
-                // CORREGIDO: Cambiado de ProducId a ProductId
+                // Cambiado de ProducId a ProductId
                 String sqlMovement = "INSERT INTO InventoryMovements (ProductId, MovementType, Quantity, UserId, Notes, Reference) " +
                                    "VALUES (?, 'IN', ?, ?, ?, ?)";
                 PreparedStatement stmtMovement = connection.prepareStatement(sqlMovement);
@@ -509,7 +509,7 @@ String sql = "SELECT ProductId, Name, CostPrice, Stock FROM Products WHERE IsAct
                 stmtStock.executeUpdate();
                 stmtStock.close();
                 
-                // Opcional: Actualizar precio de compra si es diferente
+                // Actualizar precio de compra si es diferente
                 if (unitPrice > 0) {
 String sqlUpdatePrice = "UPDATE Products SET CostPrice = ? WHERE ProductId = ?";
 PreparedStatement stmtPrice = connection.prepareStatement(sqlUpdatePrice);
@@ -564,7 +564,7 @@ PreparedStatement stmtPrice = connection.prepareStatement(sqlUpdatePrice);
     }
 
     private int getCurrentUserId() {
-        // Por ahora retornamos 1 (admin)
+        
         return 1;
     }
 }

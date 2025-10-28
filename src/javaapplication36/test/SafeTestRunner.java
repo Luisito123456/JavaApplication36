@@ -10,7 +10,7 @@ import java.util.List;
 public class SafeTestRunner {
     
     public static void main(String[] args) {
-        System.out.println("🧪 PRUEBAS SEGURAS - SOLO LECTURA");
+        System.out.println("PRUEBAS SEGURAS - SOLO LECTURA");
         System.out.println("===================================\n");
         
         testServicioExiste();
@@ -20,13 +20,13 @@ public class SafeTestRunner {
     }
     
     public static void testServicioExiste() {
-        System.out.println("📦 TEST 1: Verificar que SalesService funciona");
+        System.out.println(" TEST 1: Verificar que SalesService funciona");
         
         try {
             SalesService service = new SalesService();
             System.out.println("   ✅ SalesService se crea correctamente");
             
-            // Solo verificamos que no lance excepción al crearse
+            // Verificación para corroborar el test 
             System.out.println("   ✅ Servicio inicializado sin errores");
             
         } catch (Exception e) {
@@ -35,7 +35,7 @@ public class SafeTestRunner {
     }
     
     public static void testModelosFuncionan() {
-        System.out.println("📦 TEST 2: Verificar modelos básicos");
+        System.out.println(" TEST 2: Verificar modelos básicos");
         
         try {
             // Probamos crear objetos sin guardar en BD

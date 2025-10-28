@@ -473,7 +473,7 @@ public class SalesPanel extends JPanel {
     }
 
 private void insertSaleItem(int saleId, CartItem item) throws SQLException {
-    // SOLO insertar las columnas que NO son computadas
+    
     String sql = "INSERT INTO SaleItems (SaleId, ProductId, Quantity, UnitPrice) VALUES (?, ?, ?, ?)";
     PreparedStatement stmt = connection.prepareStatement(sql);
     stmt.setInt(1, saleId);

@@ -61,7 +61,7 @@ public class InventoryMovementDAO {
                 String typeStr = rs.getString("MovementType");
                try {
 } catch (IllegalArgumentException e) {
-    m.setType(null); // o manejar error de otra forma
+    m.setType(null); // ERROR MANEJO POR SIACASO
 }
 
                 m.setQuantity(rs.getInt("Quantity"));
@@ -83,7 +83,7 @@ public class InventoryMovementDAO {
         return list;
     }
 
-    // Opcional: obtener movimientos por producto
+    // Obtener movimientos por producto
     public List<InventoryMovement> findByProductId(int productId) throws SQLException {
         List<InventoryMovement> list = new ArrayList<>();
         String sql = "SELECT * FROM InventoryMovements WHERE ProductId = ?";
@@ -102,7 +102,7 @@ public class InventoryMovementDAO {
                 String typeStr = rs.getString("MovementType");
               try {
 } catch (IllegalArgumentException e) {
-    m.setType(null); // o manejar error de otra forma
+    m.setType(null); 
 }
 
                 m.setQuantity(rs.getInt("Quantity"));

@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class safeTestDatabase {
     
     public static void main(String[] args) {
-        System.out.println("🧪 PRUEBAS SEGURAS - SOLO LECTURA");
+        System.out.println(" PRUEBAS SEGURAS - SOLO LECTURA");
         System.out.println("===================================\n");
         
         
@@ -18,11 +18,11 @@ public class safeTestDatabase {
     
    
     public static void testConexionBaseDatos() {
-        System.out.println("📦 TEST 3: Verificar conexión a base de datos");
+        System.out.println(" TEST 3: Verificar conexión a base de datos");
         
         Connection conn = null;
         try {
-            // Intentar obtener conexión
+            // depurar conexion
             conn = DBConnectionManager.getConnection();
             
             if (conn != null && !conn.isClosed()) {
@@ -36,7 +36,7 @@ public class safeTestDatabase {
         } catch (SQLException e) {
             System.out.println("   ❌ Error de conexión: " + e.getMessage());
         } finally {
-            // IMPORTANTE: NO cerramos la conexión para no afectar tu app
+            //  Mantener la alerta sin afectar la app
             System.out.println("   💡 Conexión mantenida abierta para la aplicación");
         }
     }

@@ -5,10 +5,6 @@
 package javaapplication36.model;
 
 
-
-import java.util.Date;
-
-
 import java.util.Date;
 
 public class InventoryMovement {
@@ -25,7 +21,7 @@ public class InventoryMovement {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    // Enum para tipos de movimiento
+    // Tipos de movimiento
     public enum MovementType {
         IN,
         OUT,
