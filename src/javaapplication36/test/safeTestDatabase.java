@@ -26,15 +26,15 @@ public class safeTestDatabase {
             conn = DBConnectionManager.getConnection();
             
             if (conn != null && !conn.isClosed()) {
-                System.out.println("   ✅ Conexión a BD establecida correctamente");
-                System.out.println("   ✅ Base de datos: " + conn.getMetaData().getDatabaseProductName());
-                System.out.println("   ✅ URL: " + conn.getMetaData().getURL());
+                System.out.println("    Conexión a BD establecida correctamente");
+                System.out.println("    Base de datos: " + conn.getMetaData().getDatabaseProductName());
+                System.out.println("    URL: " + conn.getMetaData().getURL());
             } else {
-                System.out.println("   ❌ No se pudo establecer conexión");
+                System.out.println("    No se pudo establecer conexión");
             }
             
         } catch (SQLException e) {
-            System.out.println("   ❌ Error de conexión: " + e.getMessage());
+            System.out.println("    Error de conexión: " + e.getMessage());
         } finally {
             //  Mantener la alerta sin afectar la app
             System.out.println("   💡 Conexión mantenida abierta para la aplicación");

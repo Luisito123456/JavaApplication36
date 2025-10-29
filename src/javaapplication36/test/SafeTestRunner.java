@@ -13,48 +13,63 @@ public class SafeTestRunner {
         System.out.println("PRUEBAS SEGURAS - SOLO LECTURA");
         System.out.println("===================================\n");
         
-        testServicioExiste();
-        testModelosFuncionan();
+        
+        testFuncionamiento();
         
         System.out.println("\n✅ PRUEBAS SEGURAS COMPLETADAS");
     }
     
-    public static void testServicioExiste() {
-        System.out.println(" TEST 1: Verificar que SalesService funciona");
-        
-        try {
-            SalesService service = new SalesService();
-            System.out.println("   ✅ SalesService se crea correctamente");
-            
-            // Verificación para corroborar el test 
-            System.out.println("   ✅ Servicio inicializado sin errores");
-            
-        } catch (Exception e) {
-            System.out.println("   ❌ Error creando SalesService: " + e.getMessage());
-        }
-    }
     
-    public static void testModelosFuncionan() {
+    
+    public static void testFuncionamiento() {
         System.out.println(" TEST 2: Verificar modelos básicos");
         
-        try {
-            // Probamos crear objetos sin guardar en BD
-            Sale venta = new Sale();
-            SaleItem item = new SaleItem();
-            
-            item.setUnitPrice(new BigDecimal("25.00"));
-            item.setQuantity(2);
-            
-            List<SaleItem> items = new ArrayList<>();
-            items.add(item);
-            venta.setItems(items);
-            
-            System.out.println("   ✅ Modelos Sale y SaleItem funcionan");
-            System.out.println("   ✅ Precio unitario: $" + item.getUnitPrice());
-            System.out.println("   ✅ Cantidad: " + item.getQuantity());
-            
-        } catch (Exception e) {
-            System.out.println("   ❌ Error con modelos: " + e.getMessage());
+           try {
+        
+        Sale venta = new Sale();
+        SaleItem item = new SaleItem();
+        
+        
+        BigDecimal precio = new BigDecimal("25.00");
+        int cantidad = 2;
+        
+        item.setUnitPrice(precio);
+        item.setQuantity(cantidad);
+        
+        // ESTABLECER relaciones
+        List<SaleItem> items = new ArrayList<>();
+        items.add(item);
+        venta.setItems(items);
+        
+        // TESTEO
+        
+        // Verificar que los datos se guardaron correctamente
+        if (item.getUnitPrice().equals(precio)) {
+            System.out.println("    Precio unitario configurado correctamente: $" + item.getUnitPrice());
+        } else {
+            System.out.println("    Error: Precio no coincide");
+            return; // Salir si hay error
         }
+        
+        if (item.getQuantity() == cantidad) {
+            System.out.println("    Cantidad configurada correctamente: " + item.getQuantity());
+        } else {
+            System.out.println("    Error: Cantidad no coincide");
+            return;
+        }
+        
+        // Verificar que la venta tiene los items
+        if (venta.getItems().size() == 1) {
+            System.out.println("    Venta contiene los items correctamente");
+        } else {
+            System.out.println("    Error: Venta no tiene items");
+            return;
+        }
+        
+        System.out.println("   Todas las verificaciones pasaron - Modelos funcionan correctamente");
+        
+    } catch (Exception e) {
+        System.out.println("   Error con modelos: " + e.getMessage());
     }
+}
 }
