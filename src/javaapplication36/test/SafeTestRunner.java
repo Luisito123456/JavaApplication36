@@ -41,7 +41,7 @@ public class SafeTestRunner {
         items.add(item);
         venta.setItems(items);
         
-        // TESTEO
+        // TESTEO LJLKJL
         
         // Verificar que los datos se guardaron correctamente
         if (item.getUnitPrice().equals(precio)) {
