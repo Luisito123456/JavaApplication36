@@ -43,7 +43,7 @@ public class SafeTestRunner {
         
         // TESTEO LJLKJL
         
-        // Verificar que los datos se guardaron correctamente
+        // Verificar que los datos se guardaron correctament--- errores GIT
         if (item.getUnitPrice().equals(precio)) {
             System.out.println("    Precio unitario configurado correctamente: $" + item.getUnitPrice());
         } else {
